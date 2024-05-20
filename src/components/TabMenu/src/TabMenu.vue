@@ -164,6 +164,7 @@ export default defineComponent({
                         path: pathResolve(v.path, (v?.children && v?.children[0])?.path as string)
                       }
                 ) as AppRouteRecordRaw
+                console.log('item', item)
                 return (
                   <div
                     class={[

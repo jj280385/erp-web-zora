@@ -34,7 +34,7 @@ appStore.initTheme()
 html,
 body {
   padding: 0 !important;
-  margin: 0;
+  margin: 0 !important;
   overflow: hidden;
   .size;
 

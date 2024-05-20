@@ -55,6 +55,7 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
   }
 ]
 
+// 靜態路由
 export const asyncRouterMap: AppRouteRecordRaw[] = [
   {
     path: '/level',

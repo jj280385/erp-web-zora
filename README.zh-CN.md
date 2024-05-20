@@ -130,3 +130,8 @@ pnpm run build:pro
 ## 许可证
 
 [MIT](./LICENSE)
+
+## 色系
+
+- 主色： #f4cf5c
+- 主背景色： ＃292F2E
