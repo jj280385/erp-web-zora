@@ -14,6 +14,7 @@ import { useValidator } from '@/hooks/web/useValidator'
 import { Icon } from '@/components/Icon'
 import { useUserStore } from '@/store/modules/user'
 import { BaseButton } from '@/components/Button'
+import md5 from 'md5'
 
 const { required } = useValidator()
 
@@ -191,8 +192,8 @@ const remember = ref(userStore.getRememberMe)
 const initLoginInfo = () => {
   const loginInfo = userStore.getLoginInfo
   if (loginInfo) {
-    const { username, password } = loginInfo
-    setValues({ username, password })
+    const { loginName, password } = loginInfo
+    setValues({ loginName, password })
   }
 }
 onMounted(() => {
@@ -226,16 +227,17 @@ const signIn = async () => {
   await formRef?.validate(async (isValid) => {
     if (isValid) {
       loading.value = true
-      const formData = await getFormData<UserType>()
-
+      const formData = await getFormData()
       try {
-        const res = await loginApi(formData)
-
+        const params = { loginName: formData.username, password: md5(String(formData.password)) }
+        console.log('params', params)
+        const res = await loginApi(params)
+        console.log('res', res)
         if (res) {
           // 是否记住我
           if (unref(remember)) {
             userStore.setLoginInfo({
-              username: formData.username,
+              loginName: formData.username,
               password: formData.password
             })
           } else {
@@ -266,7 +268,7 @@ const signIn = async () => {
 const getRole = async () => {
   const formData = await getFormData<UserType>()
   const params = {
-    roleName: formData.username
+    roleName: formData.loginName
   }
   const res =
     appStore.getDynamicRouter && appStore.getServerDynamicRouter

@@ -5,7 +5,7 @@ import { useUserStoreWithOut } from '@/store/modules/user'
 const request = (option: AxiosConfig) => {
   const { url, method, params, data, headers, responseType } = option
   const userStore = useUserStoreWithOut()
-  return service.request({
+  const res = service.request({
     url: url,
     method,
     params,
@@ -17,6 +17,7 @@ const request = (option: AxiosConfig) => {
       ...headers
     }
   })
+  return res
 }
 
 export default {
