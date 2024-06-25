@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { ElInput, ElButton } from 'element-plus'
+// import { ElInput, ElButton } from 'element-plus'
 import { resetRouter } from '@/router'
 import { useRouter } from 'vue-router'
 import { useStorage } from '@/hooks/web/useStorage'
@@ -94,7 +94,12 @@ function handleShowForm(show = false) {
       <div :class="`${prefixCls}-entry`" v-show="!showDate">
         <div :class="`${prefixCls}-entry-content`">
           <div class="flex flex-col items-center">
-            <img src="@/assets/images/avatar.jpg" alt="" class="w-70px h-70px rounded-[50%]" />
+            <!-- <img src="@/assets/images/avatar.jpg" alt="" class="w-70px h-70px rounded-[50%]" /> -->
+            <img
+              src="https://api.dicebear.com/9.x/thumbs/svg"
+              alt="avatar"
+              class="w-36px h-36px rounded-[50%]"
+            />
             <span class="text-14px my-10px text-[var(--logo-title-text-color)]">Archer</span>
           </div>
           <ElInput

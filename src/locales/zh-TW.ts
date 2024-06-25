@@ -107,7 +107,7 @@ export default {
     password: '密碼',
     register: '註冊',
     checkPassword: '確認密碼',
-    login: '登錄',
+    login: '登入',
     otherLogin: '其他登錄方式',
     remember: '記住我',
     hasUser: '已有帳號？去登錄',
@@ -118,7 +118,7 @@ export default {
     codePlaceholder: '請輸入驗證碼'
   },
   router: {
-    login: '登錄',
+    login: '登入',
     level: '多級菜單',
     menu: '選單',
     menu1: '選單1',

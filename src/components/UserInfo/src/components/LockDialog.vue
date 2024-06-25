@@ -82,7 +82,12 @@ const handleLock = async () => {
     :title="dialogTitle"
   >
     <div class="flex flex-col items-center">
-      <img src="@/assets/images/avatar.jpg" alt="" class="w-70px h-70px rounded-[50%]" />
+      <!-- <img src="@/assets/images/avatar.jpg" alt="" class="w-70px h-70px rounded-[50%]" /> -->
+      <img
+        src="https://api.dicebear.com/9.x/thumbs/svg"
+        alt="avatar"
+        class="w-36px h-36px rounded-[50%]"
+      />
       <span class="text-14px my-10px text-[var(--top-header-text-color)]">Archer</span>
     </div>
     <Form :is-col="false" :schema="schema" :rules="rules" @register="formRegister" />

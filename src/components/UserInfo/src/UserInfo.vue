@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus'
+// import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus'
 import { useI18n } from '@/hooks/web/useI18n'
 import { useDesign } from '@/hooks/web/useDesign'
-import LockDialog from './components/LockDialog.vue'
-import { ref, computed } from 'vue'
-import LockPage from './components/LockPage.vue'
-import { useLockStore } from '@/store/modules/lock'
+// import LockDialog from './components/LockDialog.vue'
+import { ref } from 'vue'
+// import LockPage from './components/LockPage.vue'
+// import { useLockStore } from '@/store/modules/lock'
 import { useUserStore } from '@/store/modules/user'
 
 const userStore = useUserStore()
 
-const lockStore = useLockStore()
+// const lockStore = useLockStore()
 
-const getIsLock = computed(() => lockStore.getLockInfo?.isLock ?? false)
+// const getIsLock = computed(() => lockStore.getLockInfo?.isLock ?? false)
 
 const { getPrefixCls } = useDesign()
 
@@ -39,10 +39,15 @@ const toDocument = () => {
 <template>
   <ElDropdown class="custom-hover" :class="prefixCls" trigger="click">
     <div class="flex items-center">
-      <img
+      <!-- <img
         src="@/assets/images/avatar.jpg"
         alt=""
         class="w-[calc(var(--logo-height)-25px)] rounded-[50%]"
+      /> -->
+      <img
+        src="https://api.dicebear.com/9.x/thumbs/svg"
+        alt="avatar"
+        class="w-36px h-36px rounded-[50%]"
       />
       <!-- <span class="<lg:hidden text-14px pl-[5px] text-[var(--top-header-text-color)]">{{
         userStore.getUserInfo.user.loginName
@@ -64,12 +69,12 @@ const toDocument = () => {
     </template>
   </ElDropdown>
 
-  <LockDialog v-if="dialogVisible" v-model="dialogVisible" />
+  <!-- <LockDialog v-if="dialogVisible" v-model="dialogVisible" />
   <teleport to="body">
     <transition name="fade-bottom" mode="out-in">
       <LockPage v-if="getIsLock" />
     </transition>
-  </teleport>
+  </teleport> -->
 </template>
 
 <style scoped lang="less">

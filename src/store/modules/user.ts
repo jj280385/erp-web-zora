@@ -3,7 +3,7 @@ import { store } from '../index'
 import { UserLoginType, UserType } from '@/api/login/types'
 import { ElMessageBox } from 'element-plus'
 import { useI18n } from '@/hooks/web/useI18n'
-import { loginOutApi } from '@/api/login'
+// import { loginOutApi } from '@/api/login'
 import { useTagsViewStore } from './tagsView'
 import router from '@/router'
 
@@ -55,7 +55,7 @@ export const useUserStore = defineStore('user', {
     setToken(token: string) {
       this.token = token
     },
-    setUserInfo(userInfo?: UserType) {
+    setUserInfo(userInfo?: UserType | any) {
       this.userInfo = userInfo
     },
     setRoleRouters(roleRouters: string[] | AppCustomRouteRecordRaw[]) {
@@ -69,14 +69,18 @@ export const useUserStore = defineStore('user', {
         type: 'warning'
       })
         .then(async () => {
-          const res = await loginOutApi().catch(() => {})
-          if (res) {
-            this.reset()
-          }
+          // ! 不確定logout是否需要打api，還是只有清空local storage而已
+          // const res = await loginOutApi().catch(() => {})
+          // if (res) {
+          //   this.reset()
+          // }
+          this.reset()
         })
         .catch(() => {})
     },
     reset() {
+      // 清除local storage user資訊
+      localStorage.removeItem('user')
       const tagsViewStore = useTagsViewStore()
       tagsViewStore.delAllViews()
       this.setToken('')
@@ -90,7 +94,7 @@ export const useUserStore = defineStore('user', {
     setRememberMe(rememberMe: boolean) {
       this.rememberMe = rememberMe
     },
-    setLoginInfo(loginInfo: UserLoginType | undefined) {
+    setLoginInfo(loginInfo: any) {
       this.loginInfo = loginInfo
     }
   },
